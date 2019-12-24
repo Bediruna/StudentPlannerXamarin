@@ -4,18 +4,22 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="StudentPlannerXamarin.TermViewPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="ToolbarItem_Clicked" Order="Primary"/>
-    </ContentPage.ToolbarItems>
+             x:Class="StudentPlannerXamarin.AddTermPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Terms"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
-            <ListView x:Name="listView" 
-			      ItemTapped="OnItemTapped"
-			      ItemsSource="{Binding .}" />
+            
+            <Label Text="Term Name" />
+            <Entry x:Name="TermName" Placeholder="" />
+
+            <Label Text="Start Date" />
+            <DatePicker x:Name="StartDatePicker"/>
+
+            <Label Text="End Date" />
+            <DatePicker x:Name="EndDatePicker"/>
+
+            <Button Text="Add Term"
+                Clicked="Button_Clicked"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
