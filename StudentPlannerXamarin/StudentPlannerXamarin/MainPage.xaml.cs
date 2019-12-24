@@ -13,10 +13,16 @@ namespace StudentPlannerXamarin
     {
         public MainPage()
         {
+            Title = "Planner";
             InitializeComponent();
         }
 
         void TermBtnClicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new TermViewPage());
+        }
+
+        void ClassesBtnClicked(object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new TermViewPage());
         }

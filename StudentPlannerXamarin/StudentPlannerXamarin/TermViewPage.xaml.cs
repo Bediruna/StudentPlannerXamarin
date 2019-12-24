@@ -13,25 +13,27 @@ namespace StudentPlannerXamarin
     {
         public TermViewPage()
         {
+            Title = "Terms";
             InitializeComponent();
 
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
 
             var termTable = db.Table<Term>();
-            List<(string, string)> stringList = new List<(string, string)>();
+            List<Term> termNameList = new List<Term>();
             foreach (var term in termTable)
-            {                
-                stringList.Add((term.Name, term.StartDate.ToString("dd/MM/yy") + " - " + term.EndDate.ToString("dd/MM/yy")));
+            {
+                termNameList.Add(term);
             }
 
-            this.BindingContext = stringList;
+            this.BindingContext = termNameList;
         }
 
         void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e == null) return; // has been set to null, do not 'process' tapped event
-            ((ListView)sender).SelectedItem = null; // de-select the row
+            var selectedTerm = (Term)((ListView)sender).SelectedItem;
+            Navigation.PushAsync(new TermDetailPage(selectedTerm));
         }
 
         public ICommand MyCommand { private set; get; }

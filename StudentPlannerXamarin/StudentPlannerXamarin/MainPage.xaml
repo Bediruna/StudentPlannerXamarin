@@ -5,14 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="StudentPlannerXamarin.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <StackLayout VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="Fill">
         <Button Text="Terms"
                 Clicked="TermBtnClicked"/>
         <Button Text="Classes"
-                Clicked="TermBtnClicked"/>
+                Clicked="ClassesBtnClicked"/>
     </StackLayout>
 </ContentPage>

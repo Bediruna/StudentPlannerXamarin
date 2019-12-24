@@ -4,12 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="StudentPlannerXamarin.AddTermPage">
+             x:Class="StudentPlannerXamarin.AddCoursePage">
     <ContentPage.Content>
         <StackLayout>
-            
-            <Label Text="Term Name" />
-            <Entry x:Name="TermName" Placeholder="E.g. Spring 2020" />
+
+            <Label Text="Course Name" />
+            <Entry x:Name="CourseName" />
 
             <Label Text="Start Date" />
             <DatePicker x:Name="StartDatePicker"/>
@@ -17,9 +17,12 @@
             <Label Text="End Date" />
             <DatePicker x:Name="EndDatePicker"/>
 
-            <Button Text="Add Term"
-                Clicked="AddTermBtn_Clicked"/>
-            
+            <Picker x:Name="CourseStatusPicker" Title="Status"/>
+
+            <Button x:Name="AddCourse"
+                    Text="Add Course"
+                    Clicked="AddCourse_Clicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

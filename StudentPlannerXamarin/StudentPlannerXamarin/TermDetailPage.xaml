@@ -4,14 +4,16 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="StudentPlannerXamarin.TermViewPage">
+             x:Class="StudentPlannerXamarin.TermDetailPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddTermBtn" Text="+" Clicked="ToolbarItem_Clicked" Order="Primary"/>
+        <ToolbarItem x:Name="AddClassBtn" Text="+" Clicked="AddClassBtn_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="listView" 
-			      ItemTapped="OnItemTapped"
+            <Label x:Name="StartDateLabel" />
+            <Label x:Name="EndDateLabel" />
+            <ListView x:Name="ClassesListView" 
+			      ItemTapped="ClassesListView_ItemTapped"
 			      ItemsSource="{Binding .}" />
         </StackLayout>
     </ContentPage.Content>
