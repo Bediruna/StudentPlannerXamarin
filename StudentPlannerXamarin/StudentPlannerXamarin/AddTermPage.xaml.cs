@@ -24,11 +24,7 @@ namespace StudentPlannerXamarin
 
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
-            var table = db.Table<Term>();
-            if (table.Count() < 0)
-            {
-                db.CreateTable<Term>();
-            }
+
             Term newTerm = new Term
             {
                 Name = termName,
@@ -37,7 +33,9 @@ namespace StudentPlannerXamarin
             };
             db.Insert(newTerm);
 
-            Navigation.RemovePage(this);
+            //Navigation.RemovePage(this);
+            var nave = Navigation.NavigationStack;
+            Navigation.PushAsync(new TermViewPage());
         }
     }
 }

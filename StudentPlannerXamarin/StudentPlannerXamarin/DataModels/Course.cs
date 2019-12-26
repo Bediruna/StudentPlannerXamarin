@@ -18,6 +18,11 @@ namespace StudentPlannerXamarin.DataModels
         public string Description { get; set; }
         public string Notes { get; set; }
 
+
+        public string InstructorName { get; set; }
+        public string InstructorPhone { get; set; }
+        public string InstructorEmail { get; set; }
+
         public override string ToString()
         {
             return Name;

@@ -26,13 +26,8 @@ namespace StudentPlannerXamarin
             db.CreateTable<Course>();
 
             var courseTable = db.Table<Course>();
-            List<Course> courseList = new List<Course>();
-            foreach (var course in courseTable)
-            {
-                courseList.Add(course);
-            }
 
-            this.BindingContext = courseList;
+            this.BindingContext = courseTable;
         }
 
         private void AddClassBtn_Clicked(object sender, EventArgs e)

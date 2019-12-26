@@ -18,15 +18,10 @@ namespace StudentPlannerXamarin
 
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
-
+            db.CreateTable<Term>();
             var termTable = db.Table<Term>();
-            List<Term> termNameList = new List<Term>();
-            foreach (var term in termTable)
-            {
-                termNameList.Add(term);
-            }
 
-            this.BindingContext = termNameList;
+            this.BindingContext = termTable;
         }
 
         void OnItemTapped(object sender, ItemTappedEventArgs e)

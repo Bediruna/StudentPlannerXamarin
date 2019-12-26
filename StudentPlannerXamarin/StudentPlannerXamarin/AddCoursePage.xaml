@@ -7,7 +7,6 @@
              x:Class="StudentPlannerXamarin.AddCoursePage">
     <ContentPage.Content>
         <StackLayout>
-
             <Label Text="Course Name" />
             <Entry x:Name="CourseName" />
 
@@ -19,10 +18,22 @@
 
             <Picker x:Name="CourseStatusPicker" Title="Status"/>
 
+            <Label Text="Instructor Name" />
+            <Entry x:Name="InstructorName" />
+
+            <Label Text="Instructor Phone" />
+            <Entry x:Name="InstructorPhone" />
+            
+            <Label Text="Instructor Email" />
+            <Entry x:Name="InstructorEmail" />
+
+
+            <Label Text="Notes"/>
+            <Entry x:Name="Notes" />
+
             <Button x:Name="AddCourse"
                     Text="Add Course"
                     Clicked="AddCourse_Clicked"/>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

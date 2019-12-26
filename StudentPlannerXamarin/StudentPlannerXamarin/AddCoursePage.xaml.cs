@@ -27,6 +27,12 @@ namespace StudentPlannerXamarin
             string courseName = CourseName.Text;
             DateTime startDate = StartDatePicker.Date;
             DateTime endDate = EndDatePicker.Date;
+            string status = CourseStatusPicker.ToString();
+            string instructorName = InstructorName.Text;
+            string instructorPhone = InstructorPhone.Text;
+            string instructorEmail = InstructorEmail.Text;
+
+            string notes = Notes.Text;
 
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
@@ -34,7 +40,12 @@ namespace StudentPlannerXamarin
             {
                 Name = courseName,
                 StartDate = startDate,
-                EndDate = endDate
+                EndDate = endDate,
+                Status = status,
+                InstructorName = instructorName,
+                InstructorPhone = instructorPhone,
+                InstructorEmail = instructorEmail,
+                Notes = notes
             };
             db.Insert(newCourse);
 

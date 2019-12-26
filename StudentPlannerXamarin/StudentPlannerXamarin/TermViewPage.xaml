@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="StudentPlannerXamarin.TermViewPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddTermBtn" Text="+" Clicked="ToolbarItem_Clicked" Order="Primary"/>
+        <ToolbarItem x:Name="AddTermBtn" Text="Add" Clicked="ToolbarItem_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
