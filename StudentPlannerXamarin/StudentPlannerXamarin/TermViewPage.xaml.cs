@@ -13,7 +13,6 @@ namespace StudentPlannerXamarin
     {
         public TermViewPage()
         {
-            Title = "Terms";
             InitializeComponent();
 
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");

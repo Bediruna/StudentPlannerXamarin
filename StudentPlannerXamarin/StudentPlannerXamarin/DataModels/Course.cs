@@ -6,10 +6,12 @@ using System.Text;
 namespace StudentPlannerXamarin.DataModels
 {
     [Table("Course")]
-    class Course
+    public class Course
     {
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }
+        public int TermId { get; set; }//Foreign Key
+
         [MaxLength(8)]
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
@@ -17,7 +19,6 @@ namespace StudentPlannerXamarin.DataModels
         public string Status { get; set; }
         public string Description { get; set; }
         public string Notes { get; set; }
-
 
         public string InstructorName { get; set; }
         public string InstructorPhone { get; set; }

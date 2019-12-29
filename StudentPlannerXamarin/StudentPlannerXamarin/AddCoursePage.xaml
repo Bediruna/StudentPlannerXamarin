@@ -4,36 +4,39 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="StudentPlannerXamarin.AddCoursePage">
+             x:Class="StudentPlannerXamarin.AddCoursePage"
+             Title="Add Course">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Course Name" />
-            <Entry x:Name="CourseName" />
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Course Name" />
+                <Entry x:Name="CourseName" />
 
-            <Label Text="Start Date" />
-            <DatePicker x:Name="StartDatePicker"/>
+                <Label Text="Start Date" />
+                <DatePicker x:Name="StartDatePicker"/>
 
-            <Label Text="End Date" />
-            <DatePicker x:Name="EndDatePicker"/>
+                <Label Text="End Date" />
+                <DatePicker x:Name="EndDatePicker"/>
 
-            <Picker x:Name="CourseStatusPicker" Title="Status"/>
+                <Picker x:Name="CourseStatusPicker" Title="Status"/>
 
-            <Label Text="Instructor Name" />
-            <Entry x:Name="InstructorName" />
+                <Label Text="Instructor Name" />
+                <Entry x:Name="InstructorName" />
 
-            <Label Text="Instructor Phone" />
-            <Entry x:Name="InstructorPhone" />
-            
-            <Label Text="Instructor Email" />
-            <Entry x:Name="InstructorEmail" />
+                <Label Text="Instructor Phone" />
+                <Entry x:Name="InstructorPhone" />
+
+                <Label Text="Instructor Email" />
+                <Entry x:Name="InstructorEmail" />
 
 
-            <Label Text="Notes"/>
-            <Entry x:Name="Notes" />
+                <Label Text="Notes"/>
+                <Entry x:Name="Notes" />
 
-            <Button x:Name="AddCourse"
+                <Button x:Name="AddCourse"
                     Text="Add Course"
                     Clicked="AddCourse_Clicked"/>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -12,7 +12,6 @@ namespace StudentPlannerXamarin
     {
         public AddTermPage()
         {
-            Title = "Add Term";
             InitializeComponent();
         }
 
@@ -33,8 +32,9 @@ namespace StudentPlannerXamarin
             };
             db.Insert(newTerm);
 
-            //Navigation.RemovePage(this);
-            var nave = Navigation.NavigationStack;
+            //Remove open pages and show new term view page
+            Navigation.PopAsync();
+            Navigation.PopAsync();
             Navigation.PushAsync(new TermViewPage());
         }
     }

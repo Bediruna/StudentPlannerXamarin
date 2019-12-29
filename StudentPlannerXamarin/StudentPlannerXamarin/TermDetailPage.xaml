@@ -6,15 +6,21 @@
              mc:Ignorable="d"
              x:Class="StudentPlannerXamarin.TermDetailPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddClassBtn" Text="Add" Clicked="AddClassBtn_Clicked" Order="Primary"/>
+        <ToolbarItem x:Name="DeleteTermBtn" Text="Delete" Clicked="DeleteTermBtn_Clicked" Order="Primary"/>
+        <ToolbarItem x:Name="EditTermBtn" Text="Edit" Clicked="EditTermBtn_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="StartDateLabel" />
-            <Label x:Name="EndDateLabel" />
-            <ListView x:Name="ClassesListView" 
+        <ScrollView>
+            <StackLayout>
+                <!--left, top, right, bottom-->
+                <Label x:Name="StartDateLabel" Margin="5, 10, 5, 0" />
+                <Label x:Name="EndDateLabel" Margin="5, 0, 5, 5" />
+                <Label HorizontalTextAlignment="Center" Text="Courses"/>
+                <Button x:Name="AddCourseBtn" Text="Add Course" Clicked="AddCourseBtn_Clicked"/>
+                <ListView x:Name="ClassesListView" 
 			      ItemTapped="ClassesListView_ItemTapped"
 			      ItemsSource="{Binding .}" />
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

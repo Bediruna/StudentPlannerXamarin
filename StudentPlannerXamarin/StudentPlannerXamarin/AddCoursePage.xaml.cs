@@ -14,8 +14,10 @@ namespace StudentPlannerXamarin
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCoursePage : ContentPage
     {
-        public AddCoursePage()
+        Term termAddedto;
+        public AddCoursePage(Term term)
         {
+            termAddedto = term;
             InitializeComponent();
             CourseStatusPicker.Items.Add("Enrolled");
             CourseStatusPicker.Items.Add("Completed");
@@ -38,6 +40,7 @@ namespace StudentPlannerXamarin
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
             Course newCourse = new Course
             {
+                TermId = termAddedto.Id,
                 Name = courseName,
                 StartDate = startDate,
                 EndDate = endDate,
@@ -49,7 +52,9 @@ namespace StudentPlannerXamarin
             };
             db.Insert(newCourse);
 
-            Navigation.RemovePage(this);
+            Navigation.PopAsync();
+            Navigation.PopAsync();
+            Navigation.PushAsync(new TermDetailPage(termAddedto));
         }
     }
 }
