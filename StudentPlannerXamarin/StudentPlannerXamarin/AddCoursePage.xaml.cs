@@ -29,7 +29,7 @@ namespace StudentPlannerXamarin
             string courseName = CourseName.Text;
             DateTime startDate = StartDatePicker.Date;
             DateTime endDate = EndDatePicker.Date;
-            string status = CourseStatusPicker.ToString();
+            string status = CourseStatusPicker.SelectedItem.ToString();
             string instructorName = InstructorName.Text;
             string instructorPhone = InstructorPhone.Text;
             string instructorEmail = InstructorEmail.Text;
