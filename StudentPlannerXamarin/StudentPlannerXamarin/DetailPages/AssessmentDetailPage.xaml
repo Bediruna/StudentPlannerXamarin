@@ -4,17 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="StudentPlannerXamarin.TermViewPage"
-             Title="Terms">
+             x:Class="StudentPlannerXamarin.AssessmentDetailPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddTermBtn" Text="Add" Clicked="ToolbarItem_Clicked" Order="Primary"/>
+        <ToolbarItem x:Name="DeleteAssessmentBtn" Text="Delete" Clicked="DeleteAssessmentBtn_Clicked" Order="Primary"/>
+        <ToolbarItem x:Name="EditAssessmentBtn" Text="Edit" Clicked="EditAssessmentBtn_Clicked" Order="Primary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <ListView x:Name="listView" 
-			          ItemTapped="OnItemTapped"
-			          ItemsSource="{Binding .}" />
+                <Label x:Name="AssessmentTypeLabel" />
+                <Label x:Name="DueDateLabel" />
+                <Label x:Name="Description" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

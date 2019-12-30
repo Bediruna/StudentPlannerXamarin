@@ -19,12 +19,12 @@ namespace StudentPlannerXamarin
 
         void TermBtnClicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new TermViewPage());
+            Navigation.PushAsync(new TermListPage());
         }
 
         void ClassesBtnClicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new TermViewPage());
+            Navigation.PushAsync(new TermListPage());
         }
     }
 }

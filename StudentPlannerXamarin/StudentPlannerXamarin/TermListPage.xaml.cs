@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 namespace StudentPlannerXamarin
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TermViewPage : ContentPage
+    public partial class TermListPage : ContentPage
     {
-        public TermViewPage()
+        public TermListPage()
         {
             InitializeComponent();
 

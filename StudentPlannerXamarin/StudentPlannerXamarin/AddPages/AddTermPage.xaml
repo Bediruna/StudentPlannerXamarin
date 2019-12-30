@@ -7,20 +7,22 @@
              x:Class="StudentPlannerXamarin.AddTermPage"
              Title="Add Term">
     <ContentPage.Content>
-        <StackLayout>
-            
-            <Label Text="Term Name" />
-            <Entry x:Name="TermName" Placeholder="E.g. Spring 2020" />
+        <ScrollView>
+            <StackLayout>
 
-            <Label Text="Start Date" />
-            <DatePicker x:Name="StartDatePicker"/>
+                <Label Text="Term Name" />
+                <Entry x:Name="TermName" Placeholder="E.g. Spring 2020" />
 
-            <Label Text="End Date" />
-            <DatePicker x:Name="EndDatePicker"/>
+                <Label Text="Start Date" />
+                <DatePicker x:Name="StartDatePicker"/>
 
-            <Button Text="Add Term"
+                <Label Text="End Date" />
+                <DatePicker x:Name="EndDatePicker"/>
+
+                <Button Text="Add Term"
                 Clicked="AddTermBtn_Clicked"/>
-            
-        </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

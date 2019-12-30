@@ -1,10 +1,6 @@
 ﻿using StudentPlannerXamarin.DataModels;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,14 +16,14 @@ namespace StudentPlannerXamarin
             termViewed = term;
             Title = term.Name;
             InitializeComponent();
-            StartDateLabel.Text = "Start Date: " + term.StartDate.ToString("dd/MM/yy");
-            EndDateLabel.Text = "End Date: " + term.EndDate.ToString("dd/MM/yy");
+            StartDateLabel.Text = "Start Date: " + term.StartDate.ToString("MM/dd/yy");
+            EndDateLabel.Text = "End Date: " + term.EndDate.ToString("MM/dd/yy");
 
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
             db.CreateTable<Course>();
 
-            var courseTable = db.Table<Course>().Where(v => v.TermId.Equals(term.Id)) ;
+            var courseTable = db.Table<Course>().Where(v => v.TermId.Equals(term.Id));
             this.BindingContext = courseTable;
         }
 
@@ -38,19 +34,33 @@ namespace StudentPlannerXamarin
             Navigation.PushAsync(new CourseDetailPage(termViewed, selectedCourse));
         }
 
-        private void DeleteTermBtn_Clicked(object sender, EventArgs e)
+        async void DeleteTermBtn_Clicked(object sender, EventArgs e)
+        {
+            bool confirmedDelete = await DisplayAlert("Delete?", "Are you sure you want to delete this term, its courses, and its assessments?", "Yes", "No");
+            if (confirmedDelete)
+            {
+                DeleteTerm();
+            }
+        }
+
+        private void DeleteTerm()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
-            db.Delete(termViewed);
+
+            //Cascading Delete
+            db.Table<Assessment>().Where(v => v.TermId.Equals(termViewed.Id)).Delete();//Delete Assessments associated with term
+            db.Table<Course>().Where(v => v.TermId.Equals(termViewed.Id)).Delete();//Delete courses associated with term
+            db.Delete(termViewed);//Delete Term
+
             Navigation.PopAsync();
             Navigation.PopAsync();
-            Navigation.PushAsync(new TermViewPage());
+            Navigation.PushAsync(new TermListPage());
         }
 
         private void EditTermBtn_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new EditTermPage(termViewed));
         }
 
         private void AddCourseBtn_Clicked(object sender, EventArgs e)

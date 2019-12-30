@@ -14,7 +14,12 @@ namespace StudentPlannerXamarin.DataModels
         public int CourseId { get; set; }
         [MaxLength(8)]
         public string Name { get; set; }
+        public string AssessmentType { get; set; }
         public DateTime DueDate { get; set; }
         public string Description { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

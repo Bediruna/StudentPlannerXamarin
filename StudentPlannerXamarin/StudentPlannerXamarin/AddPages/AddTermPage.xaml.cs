@@ -35,7 +35,7 @@ namespace StudentPlannerXamarin
             //Remove open pages and show new term view page
             Navigation.PopAsync();
             Navigation.PopAsync();
-            Navigation.PushAsync(new TermViewPage());
+            Navigation.PushAsync(new TermListPage());
         }
     }
 }

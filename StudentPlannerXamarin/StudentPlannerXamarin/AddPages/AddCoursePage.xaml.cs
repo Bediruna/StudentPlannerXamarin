@@ -1,10 +1,6 @@
 ﻿using StudentPlannerXamarin.DataModels;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,36 +15,26 @@ namespace StudentPlannerXamarin
         {
             termAddedto = term;
             InitializeComponent();
-            CourseStatusPicker.Items.Add("Enrolled");
             CourseStatusPicker.Items.Add("Completed");
+            CourseStatusPicker.Items.Add("Enrolled");
             CourseStatusPicker.Items.Add("Pending");
         }
 
         private void AddCourse_Clicked(object sender, EventArgs e)
         {
-            string courseName = CourseName.Text;
-            DateTime startDate = StartDatePicker.Date;
-            DateTime endDate = EndDatePicker.Date;
-            string status = CourseStatusPicker.SelectedItem.ToString();
-            string instructorName = InstructorName.Text;
-            string instructorPhone = InstructorPhone.Text;
-            string instructorEmail = InstructorEmail.Text;
-
-            string notes = Notes.Text;
-
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
             Course newCourse = new Course
             {
                 TermId = termAddedto.Id,
-                Name = courseName,
-                StartDate = startDate,
-                EndDate = endDate,
-                Status = status,
-                InstructorName = instructorName,
-                InstructorPhone = instructorPhone,
-                InstructorEmail = instructorEmail,
-                Notes = notes
+                Name = CourseName.Text,
+                StartDate = StartDatePicker.Date,
+                EndDate = EndDatePicker.Date,
+                Status = CourseStatusPicker.SelectedItem.ToString(),
+                InstructorName = InstructorName.Text,
+                InstructorPhone = InstructorPhone.Text,
+                InstructorEmail = InstructorEmail.Text,
+                Notes = Notes.Text
             };
             db.Insert(newCourse);
 

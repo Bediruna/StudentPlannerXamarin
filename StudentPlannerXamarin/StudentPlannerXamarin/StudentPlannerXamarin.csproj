@@ -17,24 +17,45 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AddCoursePage.xaml">
+    <EmbeddedResource Update="AddPages\AddAssessmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="AddTermPage.xaml">
+    <EmbeddedResource Update="AddPages\AddCoursePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="CourseDetailPage.xaml">
+    <EmbeddedResource Update="AddPages\AddTermPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="TermDetailPage.xaml">
+    <EmbeddedResource Update="DetailPages\AssessmentDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="TermViewPage.xaml">
+    <EmbeddedResource Update="DetailPages\CourseDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="EditPages\EditAssessmentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DetailPages\TermDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="EditPages\EditCoursePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="EditPages\EditTermPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="TermListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="TermListPage.xaml.cs">
+      <DependentUpon>TermListPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
