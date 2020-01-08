@@ -1,10 +1,7 @@
-﻿using StudentPlannerXamarin.DataModels;
+﻿using Plugin.LocalNotifications;
+using StudentPlannerXamarin.DataModels;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -32,6 +29,9 @@ namespace StudentPlannerXamarin
 
         private void SaveChangesBtn_Clicked(object sender, EventArgs e)
         {
+            //Deleting existing notifications on assessment.
+            CrossLocalNotifications.Current.Cancel(assessmentBeingEdited.Id);
+
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
 
@@ -41,6 +41,10 @@ namespace StudentPlannerXamarin
             assessmentBeingEdited.Description = Description.Text;
 
             db.Update(assessmentBeingEdited);
+
+            //Setting notifications for anticipated due dates
+            CrossLocalNotifications.Current.Show(AssessmentName.Text, "Assessment is due tomorrow", assessmentBeingEdited.Id, DueDatePicker.Date.AddDays(-1));//Adding reminder for day before
+            CrossLocalNotifications.Current.Show(AssessmentName.Text, "Assessment is due", assessmentBeingEdited.Id, DueDatePicker.Date);
 
             Navigation.PopAsync();
             Navigation.PopAsync();

@@ -1,4 +1,5 @@
-﻿using StudentPlannerXamarin.DataModels;
+﻿using Plugin.LocalNotifications;
+using StudentPlannerXamarin.DataModels;
 using System;
 using System.IO;
 
@@ -17,6 +18,10 @@ namespace StudentPlannerXamarin
             associatedTerm = term;
             courseBeingEdited = course;
             InitializeComponent();
+            CourseStatusPicker.Items.Add("Completed");
+            CourseStatusPicker.Items.Add("Dropped");
+            CourseStatusPicker.Items.Add("In Progress");
+            CourseStatusPicker.Items.Add("Planned");
 
             CourseName.Text = course.Name;
             StartDatePicker.Date = course.StartDate;
@@ -30,6 +35,9 @@ namespace StudentPlannerXamarin
 
         private void SaveChangesBtn_Clicked(object sender, EventArgs e)
         {
+            //Deleting existing notifications on course.
+            CrossLocalNotifications.Current.Cancel(courseBeingEdited.Id);
+
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "ormdemo.db3");
             SQLite.SQLiteConnection db = new SQLite.SQLiteConnection(dbPath);
 
@@ -43,6 +51,10 @@ namespace StudentPlannerXamarin
             courseBeingEdited.Notes = Notes.Text;
 
             db.Update(courseBeingEdited);
+
+            //Resetting alerts for the start and end date of the course
+            CrossLocalNotifications.Current.Show(CourseName.Text, "Course Started", courseBeingEdited.Id, StartDatePicker.Date);
+            CrossLocalNotifications.Current.Show(CourseName.Text, "Course Ended", courseBeingEdited.Id, EndDatePicker.Date);
 
             Navigation.PopAsync();
             Navigation.PopAsync();

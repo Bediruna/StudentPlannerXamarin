@@ -1,4 +1,5 @@
-﻿using StudentPlannerXamarin.DataModels;
+﻿using Plugin.LocalNotifications;
+using StudentPlannerXamarin.DataModels;
 using System;
 using System.IO;
 
@@ -16,8 +17,9 @@ namespace StudentPlannerXamarin
             termAddedto = term;
             InitializeComponent();
             CourseStatusPicker.Items.Add("Completed");
-            CourseStatusPicker.Items.Add("Enrolled");
-            CourseStatusPicker.Items.Add("Pending");
+            CourseStatusPicker.Items.Add("Dropped");
+            CourseStatusPicker.Items.Add("In Progress");
+            CourseStatusPicker.Items.Add("Planned");
         }
 
         private void AddCourse_Clicked(object sender, EventArgs e)
@@ -37,6 +39,10 @@ namespace StudentPlannerXamarin
                 Notes = Notes.Text
             };
             db.Insert(newCourse);
+
+            //Setting alerts for the start and end date of the course
+            CrossLocalNotifications.Current.Show(CourseName.Text, "Course Started", newCourse.Id, StartDatePicker.Date);
+            CrossLocalNotifications.Current.Show(CourseName.Text, "Course Ended", newCourse.Id, EndDatePicker.Date);
 
             Navigation.PopAsync();
             Navigation.PopAsync();

@@ -1,4 +1,5 @@
-﻿using StudentPlannerXamarin.DataModels;
+﻿using Plugin.LocalNotifications;
+using StudentPlannerXamarin.DataModels;
 using System;
 using System.IO;
 
@@ -34,6 +35,10 @@ namespace StudentPlannerXamarin
                 Description = Description.Text
             };
             db.Insert(newAssessment);
+
+            //Setting notifications for anticipated due dates
+            CrossLocalNotifications.Current.Show(AssessmentName.Text, "Assessment is due tomorrow", newAssessment.Id, DueDatePicker.Date.AddDays(-1));//Adding reminder for day before
+            CrossLocalNotifications.Current.Show(AssessmentName.Text, "Assessment is due", newAssessment.Id, DueDatePicker.Date);
 
             Navigation.PopAsync();
             Navigation.PopAsync();
